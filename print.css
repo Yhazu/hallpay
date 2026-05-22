@@ -1,0 +1,2 @@
+/* /assets/css/print.css */
+@media print{.sidebar,.topbar,.page-header,.toast-container,.loading-overlay,.offline-banner,.no-print,.btn,.action-row{display:none!important}.main-wrapper{margin-left:0!important}.main-content{padding:0;max-width:none}.card,.receipt-paper,.permit-paper{box-shadow:none!important;border-color:#111!important}body{background:white;color:#111}}

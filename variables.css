@@ -1,0 +1,55 @@
+/* /assets/css/variables.css */
+:root{--color-primary:#1A56A0;--color-primary-dark:#0D3B7A;--color-primary-light:#D6E4F7;--color-primary-hover:#1648C0;--color-success:#2E7D32;--color-success-light:#E8F5E9;--color-success-border:#A5D6A7;--color-warning:#F9A825;--color-warning-light:#FFF8E1;--color-warning-border:#FFE082;--color-danger:#C62828;--color-danger-light:#FFEBEE;--color-danger-border:#EF9A9A;--color-info:#0277BD;--color-info-light:#E1F5FE;--color-bg:#F5F7FA;--color-surface:#FFFFFF;--color-border:#E5E7EB;--color-divider:#F3F4F6;--color-text-primary:#1A1A2E;--color-text-secondary:#6B7280;--color-text-muted:#9CA3AF;--color-gold:#D4A017;--color-gold-light:#FFF8E1;--sidebar-bg:#0D3B7A;--sidebar-text:#CBD5E1;--sidebar-text-active:#FFFFFF;--sidebar-item-hover:rgba(255,255,255,.08);--sidebar-item-active:rgba(255,255,255,.15);--sidebar-width:260px;--sidebar-collapsed-width:68px;--topbar-height:64px;--topbar-bg:#FFFFFF;--topbar-border:#E5E7EB;--font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-2xl:1.5rem;--font-size-3xl:1.875rem;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--radius-sm:6px;--radius-md:10px;--radius-lg:14px;--radius-xl:20px;--radius-full:9999px;--shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--shadow-md:0 4px 6px rgba(0,0,0,.05),0 2px 4px rgba(0,0,0,.04);--shadow-lg:0 10px 15px rgba(0,0,0,.07),0 4px 6px rgba(0,0,0,.04);--shadow-xl:0 20px 25px rgba(0,0,0,.08),0 8px 10px rgba(0,0,0,.03);--transition-fast:150ms ease;--transition-base:250ms ease;--transition-slow:350ms ease}[data-theme=dark]{--color-bg:#0F172A;--color-surface:#1E293B;--color-border:#334155;--color-divider:#263449;--color-text-primary:#F1F5F9;--color-text-secondary:#94A3B8;--color-text-muted:#64748B;--topbar-bg:#1E293B;--topbar-border:#334155;--color-primary-light:#17365F}
+
+/* Modern visual refresh */
+:root{
+  --color-primary:#175CD3;
+  --color-primary-dark:#123B7A;
+  --color-primary-light:#EAF1FF;
+  --color-primary-hover:#0B4AB8;
+  --color-success:#16803C;
+  --color-success-light:#EAF8EF;
+  --color-warning:#D79A10;
+  --color-warning-light:#FFF6DB;
+  --color-danger:#B42318;
+  --color-danger-light:#FDECEC;
+  --color-info:#0479A8;
+  --color-info-light:#E8F7FB;
+  --color-bg:#F6F8FC;
+  --color-surface:#FFFFFF;
+  --color-border:#DDE4F0;
+  --color-divider:#EEF2F7;
+  --color-text-primary:#111827;
+  --color-text-secondary:#526071;
+  --color-text-muted:#8A98AA;
+  --color-gold:#B7791F;
+  --color-gold-light:#FFF5D6;
+  --sidebar-bg:#0B1F3A;
+  --sidebar-text:#B8C7DB;
+  --sidebar-item-hover:rgba(255,255,255,.075);
+  --sidebar-item-active:rgba(91,141,239,.2);
+  --topbar-bg:rgba(255,255,255,.9);
+  --topbar-border:#E4EAF3;
+  --radius-sm:6px;
+  --radius-md:8px;
+  --radius-lg:8px;
+  --radius-xl:8px;
+  --shadow-sm:0 1px 2px rgba(16,24,40,.05);
+  --shadow-md:0 8px 18px rgba(16,24,40,.08);
+  --shadow-lg:0 16px 34px rgba(16,24,40,.11);
+  --shadow-xl:0 24px 60px rgba(16,24,40,.14);
+}
+
+[data-theme=dark]{
+  --color-bg:#0B1120;
+  --color-surface:#121A2B;
+  --color-border:#253149;
+  --color-divider:#1E2A40;
+  --color-text-primary:#F8FAFC;
+  --color-text-secondary:#B6C2D2;
+  --color-text-muted:#7E8BA0;
+  --topbar-bg:rgba(18,26,43,.9);
+  --topbar-border:#253149;
+  --color-primary-light:#122A52;
+  --sidebar-bg:#071426;
+}

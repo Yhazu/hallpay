@@ -1,0 +1,2 @@
+/* /assets/js/firebase-config.js */
+const firebaseConfig={apiKey:"AIzaSyC1sYiK3ucKhUECNahOFVEXAUoXd_8v6jo",authDomain:"hallpay-159a0.firebaseapp.com",projectId:"hallpay-159a0",storageBucket:"hallpay-159a0.firebasestorage.app",messagingSenderId:"851656054182",appId:"1:851656054182:web:8dbc8f464aee9235a4eb67"};if(window.firebase&&!firebase.apps.length)firebase.initializeApp(firebaseConfig);const auth=window.firebase?firebase.auth():null;const db=window.firebase?firebase.firestore():null;const storage=window.firebase?firebase.storage():null;

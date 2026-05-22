@@ -10,17 +10,17 @@ function getDashboardPath(role) {
 
 async function routeIndex() {
   if (!window.auth || firebaseConfig.apiKey === 'YOUR_API_KEY') {
-    location.replace('/login.html');
+    navigateTo('/login.html', true);
     return;
   }
 
   auth.onAuthStateChanged(async user => {
     if (!user) {
-      location.replace('/login.html');
+      navigateTo('/login.html', true);
       return;
     }
 
     const profile = await getUser(user.uid);
-    location.replace(getDashboardPath(profile?.role || 'citizen'));
+    navigateTo(getDashboardPath(profile?.role || 'citizen'), true);
   });
 }

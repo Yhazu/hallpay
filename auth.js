@@ -60,7 +60,7 @@ async function register(userData, password) {
 async function logout() {
   if (auth) await auth.signOut();
   sessionStorage.clear();
-  location.href = '/login.html';
+  navigateTo('/login.html');
 }
 
 async function sendPasswordReset(email) {
@@ -68,12 +68,12 @@ async function sendPasswordReset(email) {
 }
 
 function redirectToDashboard(role) {
-  location.href = {
+  navigateTo({
     citizen: '/citizen/dashboard.html',
     staff: '/staff/dashboard.html',
     treasurer: '/treasurer/dashboard.html',
     admin: '/admin/dashboard.html'
-  }[role] || '/citizen/dashboard.html';
+  }[role] || '/citizen/dashboard.html');
 }
 
 function requireAuth(roles = []) {
@@ -86,7 +86,7 @@ function requireAuth(roles = []) {
 
     auth.onAuthStateChanged(async user => {
       if (!user) {
-        location.href = '/login.html';
+        navigateTo('/login.html');
         return;
       }
 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         showLoader();
         if (firebaseConfig.apiKey === 'YOUR_API_KEY') {
-          location.href = '/citizen/dashboard.html';
+          navigateTo('/citizen/dashboard.html');
           return;
         }
 

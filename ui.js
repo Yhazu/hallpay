@@ -1,2 +1,136 @@
 /* /assets/js/ui.js */
-function showToast(m,t='info',d=4000){const c=document.getElementById('toastContainer')||document.body,x=document.createElement('div');x.className=`toast toast-${t}`;x.innerHTML=`<span>${escapeHtml(m)}</span><button aria-label="Close" style="margin-left:auto;color:inherit;cursor:pointer">×</button>`;x.querySelector('button').onclick=()=>x.remove();c.appendChild(x);setTimeout(()=>x.remove(),d)}function showLoader(){const e=document.getElementById('loadingOverlay');if(e)e.hidden=false}function hideLoader(){const e=document.getElementById('loadingOverlay');if(e)e.hidden=true}function openModal(id){const m=document.getElementById(id);if(m){m.hidden=false;requestAnimationFrame(()=>m.classList.add('open'))}}function closeModal(id){const m=document.getElementById(id);if(m){m.classList.remove('open');setTimeout(()=>m.hidden=true,200)}}function confirmDialog(m,onConfirm){let d=document.getElementById('confirmDialog');if(!d){d=document.createElement('div');d.id='confirmDialog';d.className='modal-overlay';d.hidden=true;d.innerHTML='<div class="modal"><div class="modal-header"><h2>Confirm Action</h2><button data-close="confirmDialog">×</button></div><div class="modal-body"><p id="confirmDialogMessage"></p></div><div class="modal-footer"><button class="btn btn-secondary" data-close="confirmDialog">Cancel</button><button class="btn btn-primary" id="confirmDialogOk">Confirm</button></div></div>';document.body.appendChild(d)}document.getElementById('confirmDialogMessage').textContent=m;document.getElementById('confirmDialogOk').onclick=()=>{closeModal('confirmDialog');onConfirm&&onConfirm()};openModal('confirmDialog')}function initSidebarToggle(){const s=document.getElementById('sidebar'),w=document.getElementById('mainWrapper');if(!s||!w)return;const o=document.createElement('div');o.className='sidebar-overlay';o.hidden=true;document.body.appendChild(o);if(localStorage.getItem('sidebarCollapsed')==='true'){s.classList.add('collapsed');w.classList.add('collapsed')}function tog(){if(innerWidth<768){s.classList.toggle('open');o.hidden=!s.classList.contains('open')}else{s.classList.toggle('collapsed');w.classList.toggle('collapsed');localStorage.setItem('sidebarCollapsed',s.classList.contains('collapsed'))}}['sidebarToggle','topbarMenuBtn'].forEach(id=>{const b=document.getElementById(id);if(b)b.onclick=tog});o.onclick=()=>{s.classList.remove('open');o.hidden=true}}function setBreadcrumb(items){const b=document.getElementById('breadcrumb');if(b)b.innerHTML=items.map((it,i)=>it.href&&i<items.length-1?`<a href="${it.href}">${escapeHtml(it.label)}</a><span>/</span>`:`<span>${escapeHtml(it.label)}</span>`).join('')}function initThemeToggle(){const h=document.documentElement,s=localStorage.getItem('theme')||'light';h.dataset.theme=s==='system'&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':s;const b=document.getElementById('themeToggle');if(b)b.onclick=()=>{const n=h.dataset.theme==='dark'?'light':'dark';h.dataset.theme=n;localStorage.setItem('theme',n)}}function renderSkeleton(c,n=3){const e=typeof c==='string'?document.querySelector(c):c;if(e)e.innerHTML=Array.from({length:n},()=>'<div class="skeleton" style="height:96px"></div>').join('')}function initOfflineBanner(){const b=document.getElementById('offlineBanner');if(!b)return;const f=()=>b.hidden=navigator.onLine;f();addEventListener('online',f);addEventListener('offline',f)}document.addEventListener('click',e=>{const c=e.target.closest('[data-close]');if(c)closeModal(c.dataset.close)});
+function showToast(message, type = 'info', duration = 4000) {
+  const container = document.getElementById('toastContainer') || document.body;
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `<span>${escapeHtml(message)}</span><button aria-label="Close" style="margin-left:auto;color:inherit;cursor:pointer">x</button>`;
+  toast.querySelector('button').onclick = () => toast.remove();
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), duration);
+}
+
+function showLoader() {
+  const overlay = document.getElementById('loadingOverlay');
+  if (overlay) overlay.hidden = false;
+}
+
+function hideLoader() {
+  const overlay = document.getElementById('loadingOverlay');
+  if (overlay) overlay.hidden = true;
+}
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('open'));
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.remove('open');
+    setTimeout(() => modal.hidden = true, 200);
+  }
+}
+
+function confirmDialog(message, onConfirm) {
+  let dialog = document.getElementById('confirmDialog');
+  if (!dialog) {
+    dialog = document.createElement('div');
+    dialog.id = 'confirmDialog';
+    dialog.className = 'modal-overlay';
+    dialog.hidden = true;
+    dialog.innerHTML = '<div class="modal"><div class="modal-header"><h2>Confirm Action</h2><button data-close="confirmDialog">x</button></div><div class="modal-body"><p id="confirmDialogMessage"></p></div><div class="modal-footer"><button class="btn btn-secondary" data-close="confirmDialog">Cancel</button><button class="btn btn-primary" id="confirmDialogOk">Confirm</button></div></div>';
+    document.body.appendChild(dialog);
+  }
+
+  document.getElementById('confirmDialogMessage').textContent = message;
+  document.getElementById('confirmDialogOk').onclick = () => {
+    closeModal('confirmDialog');
+    if (onConfirm) onConfirm();
+  };
+  openModal('confirmDialog');
+}
+
+function initSidebarToggle() {
+  const sidebar = document.getElementById('sidebar');
+  const wrapper = document.getElementById('mainWrapper');
+  if (!sidebar || !wrapper) return;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  overlay.hidden = true;
+  document.body.appendChild(overlay);
+
+  if (localStorage.getItem('sidebarCollapsed') === 'true') {
+    sidebar.classList.add('collapsed');
+    wrapper.classList.add('collapsed');
+  }
+
+  function toggle() {
+    if (innerWidth < 768) {
+      sidebar.classList.toggle('open');
+      overlay.hidden = !sidebar.classList.contains('open');
+    } else {
+      sidebar.classList.toggle('collapsed');
+      wrapper.classList.toggle('collapsed');
+      localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+    }
+  }
+
+  ['sidebarToggle', 'topbarMenuBtn'].forEach(id => {
+    const button = document.getElementById(id);
+    if (button) button.onclick = toggle;
+  });
+
+  overlay.onclick = () => {
+    sidebar.classList.remove('open');
+    overlay.hidden = true;
+  };
+}
+
+function setBreadcrumb(items) {
+  const breadcrumb = document.getElementById('breadcrumb');
+  if (!breadcrumb) return;
+  breadcrumb.innerHTML = items.map((item, index) => (
+    item.href && index < items.length - 1
+      ? `<a href="${appPath(item.href)}">${escapeHtml(item.label)}</a><span>/</span>`
+      : `<span>${escapeHtml(item.label)}</span>`
+  )).join('');
+}
+
+function initThemeToggle() {
+  const html = document.documentElement;
+  const stored = localStorage.getItem('theme') || 'light';
+  html.dataset.theme = stored === 'system' && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : stored;
+
+  const button = document.getElementById('themeToggle');
+  if (button) {
+    button.onclick = () => {
+      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    };
+  }
+}
+
+function renderSkeleton(container, count = 3) {
+  const element = typeof container === 'string' ? document.querySelector(container) : container;
+  if (element) element.innerHTML = Array.from({ length: count }, () => '<div class="skeleton" style="height:96px"></div>').join('');
+}
+
+function initOfflineBanner() {
+  const banner = document.getElementById('offlineBanner');
+  if (!banner) return;
+  const sync = () => banner.hidden = navigator.onLine;
+  sync();
+  addEventListener('online', sync);
+  addEventListener('offline', sync);
+}
+
+document.addEventListener('click', event => {
+  const closeButton = event.target.closest('[data-close]');
+  if (closeButton) closeModal(closeButton.dataset.close);
+});

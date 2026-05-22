@@ -29,7 +29,7 @@ function renderTopbar(user = window.currentUser || demoUser) {
     const links = roleLinks[role] || roleLinks.citizen;
     menu.innerHTML = `
       ${links.map(link => `
-        <a href="${link.href}" class="dropdown-item">
+        <a href="${appPath(link.href)}" class="dropdown-item">
           <span class="material-symbols-outlined">${link.icon}</span> ${link.label}
         </a>
       `).join('')}

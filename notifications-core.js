@@ -1,0 +1,2 @@
+/* /assets/js/notifications.js */
+function renderNotificationList(c,items){c.innerHTML=items.map(n=>`<div class="notification-item" data-link="${n.deepLinkRoute||''}" style="margin-bottom:10px;background:${n.read?'':'var(--color-primary-light)'}"><strong>${escapeHtml(n.title)}</strong><p>${escapeHtml(n.body)}</p><small>${formatRelativeTime(n.createdAt)}</small></div>`).join('')||'<div class="empty-state"><span class="material-symbols-outlined empty-state-icon">notifications_off</span><div class="empty-state-title">No notifications</div></div>'}

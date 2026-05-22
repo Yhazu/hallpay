@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Receipt - HALL-PAY</title>
+  <script>
+    const target = '/citizen/receipt-viewer.html' + window.location.search;
+    window.location.replace(target);
+  </script>
+</head>
+<body>
+  <p>Opening receipt...</p>
+  <p><a id="receiptLink" href="/citizen/receipt-viewer.html">Continue to receipt viewer</a></p>
+  <script>
+    document.getElementById('receiptLink').href = target;
+  </script>
+</body>
+</html>

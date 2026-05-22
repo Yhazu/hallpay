@@ -69,7 +69,7 @@ function renderTopbar(user = window.currentUser || demoUser) {
       event.stopPropagation();
 
       if (role === 'citizen') {
-        window.location.assign('/citizen/notifications.html');
+        navigateTo('/citizen/notifications.html');
         return;
       }
 

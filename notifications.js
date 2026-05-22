@@ -87,7 +87,7 @@ function renderNotificationsPage(mount, notifications) {
         await markNotificationRead(notification.id);
         notification.read = true;
       }
-      if (row.dataset.link) location.href = row.dataset.link;
+      if (row.dataset.link) navigateTo(row.dataset.link);
       else renderNotificationsPage(mount, notifications);
     });
   });

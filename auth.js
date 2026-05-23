@@ -69,11 +69,11 @@ async function sendPasswordReset(email) {
 
 function redirectToDashboard(role) {
   navigateTo({
-    citizen: '/citizen/dashboard.html',
-    staff: '/staff/dashboard.html',
-    treasurer: '/treasurer/dashboard.html',
-    admin: '/admin/dashboard.html'
-  }[role] || '/citizen/dashboard.html');
+    citizen: '/citizen-dashboard.html',
+    staff: '/staff-dashboard.html',
+    treasurer: '/treasurer-dashboard.html',
+    admin: '/admin-dashboard.html'
+  }[role] || '/citizen-dashboard.html');
 }
 
 function requireAuth(roles = []) {
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         showLoader();
         if (firebaseConfig.apiKey === 'YOUR_API_KEY') {
-          navigateTo('/citizen/dashboard.html');
+          navigateTo('/citizen-dashboard.html');
           return;
         }
 

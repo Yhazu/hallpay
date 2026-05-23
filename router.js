@@ -1,10 +1,10 @@
 /* /assets/js/router.js */
 function getDashboardPath(role) {
   return {
-    citizen: '/citizen/dashboard.html',
-    staff: '/staff/dashboard.html',
-    treasurer: '/treasurer/dashboard.html',
-    admin: '/admin/dashboard.html'
+    citizen: '/citizen-dashboard.html',
+    staff: '/staff-dashboard.html',
+    treasurer: '/treasurer-dashboard.html',
+    admin: '/admin-dashboard.html'
   }[role] || '/login.html';
 }
 

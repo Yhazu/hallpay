@@ -1,7 +1,7 @@
 /* /assets/js/utils.js */
 const APP_ROUTE_ROOTS=new Set(['admin','citizen','staff','treasurer','shared']);
 function appBasePath(){const parts=location.pathname.split('/').filter(Boolean),first=parts[0]||'';return first&&!APP_ROUTE_ROOTS.has(first)&&!first.endsWith('.html')?`/${first}/`:'/'}
-function flatRoutePath(path){return path.replace(/^\/(admin|citizen|staff|treasurer|shared)\/([^/?#]+\.html)(.*)$/,'/$1-$2$3')}
+function flatRoutePath(path){const base=appBasePath();let value=path;if(base!=='/'&&value.startsWith(base))value='/'+value.slice(base.length);return value.replace(/^\/(admin|citizen|staff|treasurer|shared)\/([^/?#]+\.html)(.*)$/,'/$1-$2$3')}
 function appPath(path){if(!path||/^(https?:|mailto:|tel:|data:|blob:|#)/i.test(path))return path;const normalized=flatRoutePath(path);if(normalized.startsWith('/'))return appBasePath()+normalized.slice(1);return normalized}
 function navigateTo(path,replace=false){const target=appPath(path);replace?location.replace(target):location.href=target}
 document.addEventListener('click',event=>{const link=event.target.closest('a[href^="/"]');if(!link||link.target||event.defaultPrevented)return;event.preventDefault();navigateTo(link.getAttribute('href'))});
